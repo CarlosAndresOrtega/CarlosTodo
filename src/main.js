@@ -49,7 +49,11 @@ function initElements() {
   renderer = new THREE.WebGLRenderer({
     canvas: document.querySelector("#app"),
   });
-  if(window.innerWidth <=1920 && window.innerWidth>=1200){
+  if(window.innerWidth >=1920 ){
+    renderer.setSize(window.innerWidth / 2.1, window.innerHeight / 2);
+    camera.position.set(-30, 80, -110);
+
+  }else if(window.innerWidth <=1920 && window.innerWidth>=1200){
     renderer.setSize(window.innerWidth / 2.1, window.innerHeight / 2);
     camera.position.set(-30, 80, -110);
 
@@ -179,51 +183,9 @@ function validar(valor) {
       loadOBJ_MTL_2("./models/zapatos5/", "zapatos5.mtl", "zapatos5.obj");
       break;
   }
-  //   if (valor == "Player 01") {
-  //     if (zapatos != null) {
-  //       console.log("aqui estamos");
-  //       scene.remove(zapatos);
-  //       zapatos.visible = false;
-  //     }
-  //     loadOBJ_MTL("./models/botas/", "shoe.mtl", "shoe.obj");
-  //     contador++;
-  //   }
-  //   if (valor == "Player 02") {
-  //     scene.remove(thing);
-  //     // loadGITF();
-  //     loadOBJ_MTL_2("./models/botas/", "zapatos.mtl", "zapatos.obj");
-  //   }
-}
-// function ChangeP() {
   
-//   //   if (param.a == "Player 01") {
-//   //     console.log("antes de la condicion");
-//   //     if (zapatos != null) {
-//   //       console.log("aqui estamos");
-//   //       scene.remove(zapatos);
-//   //       zapatos.visible = false;
-//   //     }
-//   //     loadOBJ_MTL("./models/botas/", "shoe.mtl", "shoe.obj");
-//   //   }
-//   //   if (param.a == "Player 02") {
-//   //     scene.remove(thing);
-//   //     // loadGITF();
-//   //     loadOBJ_MTL_2("./models/botas/", "zapatos.mtl", "zapatos.obj");
-//   //   }
-// }
-// function showModel(b) {
-//   if (param.a == "Player 01") {
-//     thing.visible = b;
-//   }
-//   if (param.a == "Player 02") {
-//     zapatos.visible = b;
-//   }
-// }
-// function luces() {
-//   scene.remove(light);
-//   scene.remove(light2);
-//   createLight();
-// }
+}
+
 function animate() {
   requestAnimationFrame(animate);
   // required if controls.enableDamping or controls.autoRotate are set to true
@@ -237,43 +199,6 @@ function onWindowResize() {
   camera.updateProjectionMatrix();
   renderer.setSize(window.innerWidth, window.innerHeight);
 }
-
-// function initGUI() {
-//   var gui = new dat.GUI();
-
-//   gui
-//     .add(param, "a", ["Player 01", "Player 02", "Player 03"])
-//     .name("3D Model")
-//     .onChange(ChangeP);
-//   gui.add(param, "b").name("Show Model").onChange(showModel);
-//   gui.addColor(param, "c").name("Color Light").onChange(luces);
-
-//   // Change .... To Action
-//   // .....
-// }
-// function loadSTL() {
-//   const loader = new THREE.STLLoader();
-
-//   const material = new THREE.MeshPhongMaterial({
-//     color: 0x808080,
-//     specular: 0x111111,
-//   });
-
-//   loader.load("./models/reloj.stl", function (geometry) {
-//     const mesh = new THREE.Mesh(geometry, material);
-
-//     mesh.position.set(0, -0.25, 0.6);
-
-//     mesh.scale.set(0.5, 0.5, 0.5);
-//     mesh.rotation.y = 0;
-//     mesh.rotation.x = 0;
-//     mesh.castShadow = true;
-//     mesh.receiveShadow = true;
-//     mesh.doubleSided = true;
-
-//     scene.add(mesh);
-//   });
-// }
 
 function loadOBJ_MTL(generalPath, pathMTL, pathOBJ) {
   var mtlLoader = new THREE.MTLLoader();
@@ -319,39 +244,3 @@ function loadOBJ_MTL_2(generalPath, pathMTL, pathOBJ) {
     });
   });
 }
-// function loadGITF() {
-//   // Instantiate a loader
-//   var loader = new THREE.GLTFLoader();
-
-//   // Optional: Provide a DRACOLoader instance to decode compressed mesh data
-//   var dracoLoader = new THREE.DRACOLoader();
-//   dracoLoader.setDecoderPath("./models/botas/");
-//   loader.setDRACOLoader(dracoLoader);
-
-//   // Load a glTF resource
-//   loader.load(
-//     // resource URL
-//     "./models/botas/botas.glb",
-//     // called when the resource is loaded
-//     function (gltf) {
-//       thing2 = gltf.scene;
-//       scene.add(gltf.scene);
-//       gltf.animations; // Array<THREE.AnimationClip>
-//       gltf.scene; // THREE.Scene
-//       gltf.scenes; // Array<THREE.Scene>
-//       gltf.cameras; // Array<THREE.Camera>
-//       gltf.asset; // Object
-//       gltf.scene.scale.set(10, 10, 10); // scale here
-//       gltf.scene.rotation.y = -(Math.PI / 2);
-//     },
-
-//     // called while loading is progressing
-//     function (xhr) {
-//       console.log((xhr.loaded / xhr.total) * 100 + "% loaded");
-//     },
-//     // called when loading has errors
-//     function (error) {
-//       console.log("An error happened");
-//     }
-//   );
-// }
