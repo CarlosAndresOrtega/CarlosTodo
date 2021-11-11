@@ -90,7 +90,7 @@ function initElements() {
 
 //   initGUI();
 //   ChangeP();
-loadOBJ_MTL("./models/zapatos2/", "zapatos2.mtl", "zapatos2.obj");
+  loadOBJ_MTL("./models/zapatos2/", "zapatos2.mtl", "zapatos2.obj");
   createLight();
   //   loadOBJ_MTL("../models/botas/", "zapatos.mtl", "zapatos.obj");
   // loadGITF();
