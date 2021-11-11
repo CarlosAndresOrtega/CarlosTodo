@@ -30,7 +30,7 @@ colorInput.addEventListener("input", (e) => {
 
 function start() {
   window.addEventListener("resize", onWindowResize, false);
-  alert("Bienvenido, Si tiene problemas con los componentes de la pagína, solo vuelva a recargarla");
+  alert("Bienvenido, Si tiene problemas con los componentes de la pagína, solo vuelva a recargarla. La carga de los modelos depende de su navegador, por favor espera a que carguen");
   initElements();
   animate();
 }
